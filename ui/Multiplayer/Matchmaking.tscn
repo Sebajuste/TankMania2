@@ -1,0 +1,108 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/Multiplayer/Matchmaking.gd" type="Script" id=1]
+
+[node name="Matchmaking" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = -40.0
+script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 944.0
+margin_bottom = 688.0
+
+[node name="ReturnMain" type="Button" parent="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -111.38
+margin_top = 11.6067
+margin_right = -12.3805
+margin_bottom = 45.6067
+text = "Return Main"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -50.0
+margin_bottom = 50.0
+size_flags_vertical = 4
+custom_constants/separation = 20
+
+[node name="UsernameControl" type="HBoxContainer" parent="Panel/VBoxContainer"]
+editor/display_folded = true
+margin_left = 312.0
+margin_right = 632.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_horizontal = 4
+
+[node name="Control" type="Control" parent="Panel/VBoxContainer/UsernameControl"]
+margin_right = 320.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 320, 0 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/UsernameControl/Control"]
+margin_left = 11.042
+margin_top = 7.63025
+margin_right = 95.042
+margin_bottom = 28.6302
+text = "Username"
+
+[node name="Username" type="LineEdit" parent="Panel/VBoxContainer/UsernameControl/Control"]
+margin_left = 116.0
+margin_top = 2.0
+margin_right = 252.0
+margin_bottom = 26.0
+
+[node name="StartMatchmaking" type="Button" parent="Panel/VBoxContainer/UsernameControl/Control"]
+margin_left = 273.0
+margin_top = 3.0
+margin_right = 307.0
+margin_bottom = 23.0
+text = "OK"
+
+[node name="StatusContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+editor/display_folded = true
+visible = false
+margin_left = 295.0
+margin_top = 60.0
+margin_right = 649.0
+margin_bottom = 100.0
+size_flags_horizontal = 4
+
+[node name="Info" type="Label" parent="Panel/VBoxContainer/StatusContainer"]
+margin_right = 250.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 250, 40 )
+
+[node name="CancelButton" type="Button" parent="Panel/VBoxContainer/StatusContainer"]
+margin_left = 254.0
+margin_right = 354.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 40 )
+text = "Cancel"
+
+[node name="HTTPRequestMatchmakingJoin" type="HTTPRequest" parent="."]
+use_threads = true
+
+[node name="HTTPRequestMatchmakingStatus" type="HTTPRequest" parent="."]
+use_threads = true
+
+[node name="HTTPRequestMatchmakingCancel" type="HTTPRequest" parent="."]
+use_threads = true
+
+[node name="MatchmakingRequestTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="pressed" from="Panel/ReturnMain" to="." method="_on_ReturnMain_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/UsernameControl/Control/StartMatchmaking" to="." method="_on_StartMatchmaking_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/StatusContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="request_completed" from="HTTPRequestMatchmakingJoin" to="." method="_on_HTTPRequestMatchmakingJoin_request_completed"]
+[connection signal="request_completed" from="HTTPRequestMatchmakingStatus" to="." method="_on_HTTPRequestMatchmakingStatus_request_completed"]
+[connection signal="request_completed" from="HTTPRequestMatchmakingCancel" to="." method="_on_HTTPRequestMatchmakingCancel_request_completed"]
+[connection signal="timeout" from="MatchmakingRequestTimer" to="." method="_on_MatchmakingRequestTimer_timeout"]

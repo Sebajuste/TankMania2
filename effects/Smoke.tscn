@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://effects/smoke.material" type="Material" id=1]
+[ext_resource path="res://effects/smoke_particle.material" type="Material" id=2]
+
+[sub_resource type="QuadMesh" id=2]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+size = Vector2( 1, 1 )
+
+[node name="Smoke" type="Spatial"]
+
+[node name="Particles" type="Particles" parent="." index="0"]
+
+transform = Transform( 1.97663, 0, 0, 0, -8.64011e-008, 1.97663, 0, -1.97663, -8.64011e-008, 0, 0, 0 )
+layers = 1
+material_override = ExtResource( 1 )
+cast_shadow = 0
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+emitting = true
+amount = 32
+lifetime = 2.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_aabb = AABB( -4, -4, -4, 8, 8, 8 )
+local_coords = false
+draw_order = 0
+process_material = ExtResource( 2 )
+draw_passes = 1
+draw_pass_1 = SubResource( 2 )
+_sections_unfolded = [ "Draw Passes", "Drawing", "Geometry", "LOD", "Process Material", "Time", "Transform" ]
+
+

@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Game.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Multiplayer.gd" type="Script" id=2]
+
+[node name="Game" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+
+[node name="Goal" parent="." index="0"]
+
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -56.5832, 1.53779, -79.3019 )
+
+[node name="StartPoints" type="Spatial" parent="Environment" index="3"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Point1" type="Position3D" parent="Environment/StartPoints" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.14513, 0, 6.41833 )
+
+[node name="Point2" type="Position3D" parent="Environment/StartPoints" index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.18742, 0, -8.03371 )
+
+[node name="Point3" type="Position3D" parent="Environment/StartPoints" index="2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.60667, 0, -7.82519 )
+
+[node name="Point4" type="Position3D" parent="Environment/StartPoints" index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.56478, 0, 6.46467 )
+
+[node name="Players" type="Node" parent="." index="2"]
+
+[connection signal="body_exited" from="Goal" to="." method="_on_Goal_body_exited"]
+
+

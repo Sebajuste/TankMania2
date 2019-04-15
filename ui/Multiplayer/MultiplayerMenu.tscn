@@ -1,0 +1,176 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/Multiplayer/MultiplayerMenu.gd" type="Script" id=1]
+[ext_resource path="res://scripts/network/HolePunching.gd" type="Script" id=2]
+
+[node name="MultiplayerMenu" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="TitleMenu" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 36.0
+text = "Multiplayer"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = -40.0
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+margin_right = 944.0
+margin_bottom = 688.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Header" type="Control" parent="MarginContainer/Panel/VBoxContainer"]
+margin_right = 944.0
+margin_bottom = 70.0
+grow_vertical = 0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/Header"]
+margin_left = 38.0
+margin_top = 23.0
+margin_right = 130.0
+margin_bottom = 55.0
+text = "Username :"
+align = 1
+valign = 1
+
+[node name="Username" type="LineEdit" parent="MarginContainer/Panel/VBoxContainer/Header"]
+margin_left = 144.0
+margin_top = 26.0
+margin_right = 244.0
+margin_bottom = 56.0
+text = "Your Name"
+
+[node name="ReturnMainButton" type="Button" parent="MarginContainer/Panel/VBoxContainer/Header"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -169.0
+margin_top = -27.0
+margin_right = -44.0
+margin_bottom = 3.0
+text = "Return Main"
+
+[node name="Refresh" type="Button" parent="MarginContainer/Panel/VBoxContainer/Header"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -170.0
+margin_top = 11.0
+margin_right = -45.0
+margin_bottom = 42.0
+text = "Refresh"
+
+[node name="Content" type="Control" parent="MarginContainer/Panel/VBoxContainer"]
+margin_top = 74.0
+margin_right = 944.0
+margin_bottom = 614.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/VBoxContainer/Content"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 10.0
+margin_right = -40.0
+margin_bottom = -10.0
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="MarginContainer/Panel/VBoxContainer/Content/MarginContainer"]
+self_modulate = Color( 0.582031, 0.582031, 0.582031, 1 )
+margin_right = 864.0
+margin_bottom = 520.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel/VBoxContainer/Content/MarginContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+scroll_horizontal_enabled = false
+
+[node name="RoomList" type="VBoxContainer" parent="MarginContainer/Panel/VBoxContainer/Content/MarginContainer/Panel/ScrollContainer"]
+margin_right = 864.0
+margin_bottom = 520.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Footer" type="Control" parent="MarginContainer/Panel/VBoxContainer"]
+margin_top = 618.0
+margin_right = 944.0
+margin_bottom = 688.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="Control" type="Control" parent="MarginContainer/Panel/VBoxContainer/Footer"]
+margin_left = 48.0
+margin_top = 6.0
+margin_right = 509.0
+margin_bottom = 50.0
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/Footer/Control"]
+margin_top = 15.0
+margin_right = 48.0
+margin_bottom = 29.0
+text = "Server :"
+
+[node name="Host" type="LineEdit" parent="MarginContainer/Panel/VBoxContainer/Footer/Control"]
+margin_left = 51.0
+margin_top = 10.0
+margin_right = 163.0
+margin_bottom = 34.0
+text = "127.0.0.1"
+
+[node name="PortLabel" type="Label" parent="MarginContainer/Panel/VBoxContainer/Footer/Control"]
+margin_left = 169.0
+margin_top = 15.0
+margin_right = 203.0
+margin_bottom = 29.0
+text = "Port :"
+
+[node name="Port" type="LineEdit" parent="MarginContainer/Panel/VBoxContainer/Footer/Control"]
+margin_left = 211.0
+margin_top = 9.0
+margin_right = 269.0
+margin_bottom = 33.0
+text = "34567"
+align = 1
+
+[node name="JoinButton" type="Button" parent="MarginContainer/Panel/VBoxContainer/Footer/Control"]
+margin_left = 293.0
+margin_right = 381.0
+margin_bottom = 44.0
+text = "Join"
+
+[node name="HostButton" type="Button" parent="MarginContainer/Panel/VBoxContainer/Footer"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -152.0
+margin_top = -34.0
+margin_right = -43.0
+margin_bottom = 12.0
+text = "Host"
+
+[node name="HolePunching" type="Node" parent="."]
+script = ExtResource( 2 )
+master_host = "87.90.14.33"
+auto_start = true
+
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Header/ReturnMainButton" to="." method="_on_ReturnMainButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Header/Refresh" to="." method="_on_Refresh_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Footer/Control/JoinButton" to="." method="_on_JoinButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Footer/HostButton" to="." method="_on_HostButton_pressed"]
+[connection signal="gamelist_received" from="HolePunching" to="." method="_on_HolePunching_gamelist_received"]

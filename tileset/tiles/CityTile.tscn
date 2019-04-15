@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://tileset/Stone_Tiles_001_SD/Stone_Tiles_001_COLOR.jpg" type="Texture" id=1]
+[ext_resource path="res://tileset/Stone_Tiles_001_SD/Stone_Tiles_001_OCC.jpg" type="Texture" id=2]
+[ext_resource path="res://tileset/Stone_Tiles_001_SD/Stone_Tiles_001_SPEC.jpg" type="Texture" id=3]
+[ext_resource path="res://tileset/Stone_Tiles_001_SD/Stone_Tiles_001_NORM.jpg" type="Texture" id=4]
+[ext_resource path="res://tileset/Concrete_panels_001_SD/Concrete_panels_001.material" type="Material" id=5]
+[ext_resource path="res://models/city/building01/Building01.material" type="Material" id=6]
+[ext_resource path="res://models/city/building01/Building01.tscn" type="PackedScene" id=7]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 15.1137, 4.36868, 15.3362 )
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 1 )
+metallic_texture = ExtResource( 3 )
+roughness = 0.0
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 4 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 10, 10, 10 )
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 4.34973, 18.8254, 4.15302 )
+
+[node name="CityTile" type="StaticBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.85241, 0 )
+shape = SubResource( 1 )
+
+[node name="Spatial" type="Spatial" parent="."]
+editor/display_folded = true
+
+[node name="Floor" type="MeshInstance" parent="Spatial"]
+transform = Transform( 15, 0, 0, 0, -6.55671e-007, 0.2, 0, -15, -8.74228e-009, 0, -0.00462437, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial"]
+transform = Transform( 3.58462, 0, 0, 0, 10.5963, 0, 0, 0, 10.8388, 11.4351, 7.80496, 4.09626 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="Spatial"]
+transform = Transform( 5.50456, 0, 0, 0, 5.31083, 0, 0, 0, 2.57616, 9.32424, 4.88411, -12.2869 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="Spatial"]
+transform = Transform( 5.50456, 0, 0, 0, 2.18451, 0, 0, 0, 3.90145, -2.26151, 2.15562, -11.0644 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="Spatial"]
+transform = Transform( 8.09837, 0, 0, 0, 2.04405, 0, 0, 0, 1.47696, -2.17679, 1.54763, 13.7925 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Spatial"]
+transform = Transform( 2.05752, 0, 0, 0, 3.54232, 0, 0, 0, 8.3786, -12.817, 2.19975, 6.6861 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="Spatial"]
+transform = Transform( 2.6534, 0, 0, 0, 5.23932, 0, 0, 0, 2.80826, -12.271, 4.75534, -12.1066 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="Spatial"]
+transform = Transform( 4.08101, 0, 0, 0, 9.24823, 0, 0, 0, 2.80826, -10.9127, 8.89651, -5.29813 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 6 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Spatial"]
+transform = Transform( 6.41883, 0, 0, 0, 11.5901, 0, 0, 0, 2.80089, -6.42861, 9.85369, 7.9755 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 6 )
+
+[node name="Building01" parent="Spatial" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.495607, -2.4514 )
+
+[node name="Building02" parent="Spatial" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 0.484818, 0, 0, 0, 2.94489, 11.1075, -0.153768, 2.33214 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0501852, 16.8283, -2.05847 )
+shape = SubResource( 5 )
+
