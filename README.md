@@ -5,6 +5,8 @@ Find your way into a labyrinth, with or without fighting other tanks.
 
 [Download](https://sebajuste.itch.io/tankmania2)
 
+The porject use [Godot](https://godotengine.org/) version 3.1
+
 ### Inputs
 
 ###### Keyboard / Mouse
